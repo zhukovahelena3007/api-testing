@@ -1,0 +1,689 @@
+{
+  "info": {
+    "_postman_id": "45661a38-e907-4b53-992e-ea8e4a9fcf77",
+    "name": "DemoShopping",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "58215837",
+    "_collection_link": "https://go.postman.co/collection/58215837-45661a38-e907-4b53-992e-ea8e4a9fcf77?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Products",
+      "item": [
+        {
+          "name": "Возвращение списка всех продуктов",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/products",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "products"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Добавление нового продукта",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400200);\r",
+                  "});\r",
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+                  "});\r",
+                  "pm.test(\"Your test name\", function () {\r",
+                  "    var jsonData = pm.response.json();\r",
+                  "    pm.expect(jsonData.value).to.eql(100);\r",
+                  "});\r",
+                  "pm.test(\"Response time is less than 200ms\", function () {\r",
+                  "    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"ipHone18 proMaxTest\",\r\n  \"description\": \"This is an example product.\",\r\n  \"price\": 1500,\r\n  \"category\": \"Electronics\",\r\n  \"manufacturer\": \"Example Manufacturer\",\r\n  \"imageUrl\": \"http://example.com/image.jpg\",\r\n  \"freeShipping\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_URL_demo}}/add-product",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "add-product"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поиск товара по ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 401\", function () {\r",
+                  "    pm.response.to.have.status(401);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/products/id/{productId}",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "products",
+                "id",
+                "{productId}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удаление товара по ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 403\", function () {\r",
+                  "    pm.response.to.have.status(403);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}//products/id/{productId}",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "",
+                "products",
+                "id",
+                "{productId}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Полное обновление товара по ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_URL_demo}}//products/id/{productId}",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "",
+                "products",
+                "id",
+                "{productId}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Частичное обновление товара по ID",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  "pm.test(\"Body matches string\", function () {\r",
+                  "    pm.expect(pm.response.text()).to.include(\"string_you_want_to_search\");\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"string\",\r\n  \"description\": \"string\",\r\n  \"price\": 0,\r\n  \"category\": \"string\",\r\n  \"manufacturer\": \"string\",\r\n  \"imageUrl\": \"string\",\r\n  \"freeShipping\": true\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_URL_demo}}/products/id/{productId}",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "products",
+                "id",
+                "{productId}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поиск товара по категориям",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});\r",
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/products/FindByCategory?category=Категория продукта",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "products",
+                "FindByCategory"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": "Категория продукта",
+                  "description": "Категория продукта"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поиск товара по производителю",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/products/FindByManufacturer?manufacturer=Производитель продукта",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "products",
+                "FindByManufacturer"
+              ],
+              "query": [
+                {
+                  "key": "manufacturer",
+                  "value": "Производитель продукта",
+                  "description": "Производитель продукта"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Поиск товара с бесплатной доставкой",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 404\", function () {\r",
+                  "    pm.response.to.have.status(404);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/products/FindByShipping?freeShipping=true&freeShipping=False",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "products",
+                "FindByShipping"
+              ],
+              "query": [
+                {
+                  "key": "freeShipping",
+                  "value": "true",
+                  "description": "Наличие бесплатной доставки (true/false)"
+                },
+                {
+                  "key": "freeShipping",
+                  "value": "False",
+                  "description": "Наличие бесплатной доставки (true/false)"
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Фильтрация списка продуктов",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "pm.test(\"Status code is 200\", function () {\r",
+                  "    pm.response.to.have.status(200);\r",
+                  "});\r",
+                  "pm.test(\"Status code is 400\", function () {\r",
+                  "    pm.response.to.have.status(400);\r",
+                  "});"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/products/filter?category&manufacturer&freeShipping&freeShipping&minPrice&maxPrice",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "products",
+                "filter"
+              ],
+              "query": [
+                {
+                  "key": "category",
+                  "value": null,
+                  "description": "Категория продукта"
+                },
+                {
+                  "key": "manufacturer",
+                  "value": null,
+                  "description": "Производитель продукта"
+                },
+                {
+                  "key": "freeShipping",
+                  "value": null,
+                  "description": "Наличие бесплатной доставки"
+                },
+                {
+                  "key": "freeShipping",
+                  "value": null,
+                  "description": "Наличие бесплатной доставки"
+                },
+                {
+                  "key": "minPrice",
+                  "value": null,
+                  "description": "Минимальная цена продукта"
+                },
+                {
+                  "key": "maxPrice",
+                  "value": null,
+                  "description": "Максимальная цена продукта"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Cart",
+      "item": [
+        {
+          "name": "Добавление товара в корзину пользователя",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"productId\": 0,\r\n  \"quantity\": 0\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_URL_demo}}/cart",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "cart"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Возвращает содержимое корзины пользователя",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/getCart",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "getCart"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Обновляет количество товаров в корзине пользователя",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"quantity\": 0\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_URL_demo}}/cart/{cartItemId}",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "cart",
+                "{cartItemId}"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Удаляет товар из корзины пользователя",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/cart/{cartItemId}",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "cart",
+                "{cartItemId}"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Регистрация нового пользователя",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"username\": \"DemoUser\",\r\n  \"password\": \"Password123\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_URL_demo}}/register",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Получение всех ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_URL_demo}}/users",
+              "host": [
+                "{{base_URL_demo}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{KeyDemo1}}",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_URL_demo",
+      "secret": true,
+      "source": {
+        "provider": "postman",
+        "postman": {
+          "type": "cloud",
+          "secretId": "1c66610d-810f-4f14-88b0-667a22aee079",
+          "vaultId": "98cac46f-5f18-4e1e-af82-b8cf2dad9c74"
+        }
+      }
+    },
+    {
+      "key": "ID_Demo",
+      "secret": true,
+      "source": {
+        "provider": "postman",
+        "postman": {
+          "type": "cloud",
+          "secretId": "c0c8a9cc-3e6a-456e-b66b-143432002cf9",
+          "vaultId": "98cac46f-5f18-4e1e-af82-b8cf2dad9c74"
+        }
+      }
+    }
+  ]
+}
