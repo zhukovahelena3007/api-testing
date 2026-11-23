@@ -1,5 +1,7 @@
 **Тестирование API** 
 
+**REST collection**
+
 *Тестирование REST API интернет-магазина DemoShopping по Swagger-документации.*
 [![Run in Postman](https://www.postman.com/elenazhuzhu07-9576735/workspace/elena-s-workspace/collection/58407221-860cb050-769e-4ec4-ab10-9d4294207ae2?action=share&creator=58407221&active-environment=58407221-cce06f22-2a7e-4d6e-9d7e-d7a6d8267f6b)](https://postman.com)
 
